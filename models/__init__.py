@@ -1,2 +1,2 @@
-from models.spatial_transformers.spatial_transformer import get_stn
+from models.spatial_transformers.spatial_transformer import get_stn, SpatialTransformer
 # from models.cluster_classifier import ResnetClassifier

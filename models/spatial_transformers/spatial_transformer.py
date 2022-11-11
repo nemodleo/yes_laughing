@@ -617,13 +617,13 @@ class SpatialTransformer(nn.Module):
                 rtn = rtn[0]
             return rtn
 
-    # @staticmethod
-    # def normalize(points, res, out_res):
-    #     return points.div(out_res - 1).add(-0.5).mul(2).mul((res - 1) / res)
+    @staticmethod
+    def normalize(points, res, out_res):
+        return points.div(out_res - 1).add(-0.5).mul(2).mul((res - 1) / res)
 
-    # @staticmethod
-    # def unnormalize(points, res, out_res):
-    #     return points.div((res - 1) / res).div(2).add(0.5).mul(out_res - 1)
+    @staticmethod
+    def unnormalize(points, res, out_res):
+        return points.div((res - 1) / res).div(2).add(0.5).mul(out_res - 1)
 
     # @staticmethod
     # def convert(points, current_res, target_res):

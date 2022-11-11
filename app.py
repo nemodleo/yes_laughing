@@ -1,10 +1,9 @@
-
 import streamlit as st
+from streamer import streamer_webcam_gg
 
-# from data import *
-from gg import webcam_gg
+# set
+st.title("Yes, Laughing")
+# st.set_page_config(layout= 'wide')
 
-# st.title("Realtime")
-st.set_page_config(layout= 'wide')
-
-webcam_gg()
+# start
+streamer_webcam_gg()

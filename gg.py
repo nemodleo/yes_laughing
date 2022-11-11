@@ -47,14 +47,14 @@ def webcam_gg():#style_model_name):
         def recv(self, frame: av.VideoFrame) -> av.VideoFrame:
             # np.ndarray, RGB, [480 640 3]
             img = frame.to_ndarray(format="bgr24")
-            assert img.shape == (480, 640, 3), f'[!] {img.shape} != (480, 640, 3)'
+            # assert img.shape == (480, 640, 3), f'[!] {img.shape} != (480, 640, 3)'
             H, W, C = img.shape
             img = img[:, ::-1, :]
             # [480 480 3]
             img = img[:, (W-H)//2:(W+H)//2,:]
-            assert img.shape == (480, 480, 3)
+            # assert img.shape == (480, 480, 3)
             img = cv2.resize(img, (512, 512), interpolation=cv2.INTER_AREA)
-            assert img.shape == (512, 512, 3)
+            # assert img.shape == (512, 512, 3)
 
             # [H W]
             gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)

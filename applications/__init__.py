@@ -9,7 +9,6 @@ def load_stn(args, load_classifier=False, device='cuda'):
     supersize = args.real_size #
     ckpt, using_our_pretrained_model = find_model(args.ckpt)
 
-    print(ckpt['t_ema'])
     if using_our_pretrained_model and not args.override:  # Load our test time hyperparameters automatically
         hyperparameters = PRETRAINED_TEST_HYPERPARAMS[args.ckpt]
         for hyper_name, hyper_val in hyperparameters.items():

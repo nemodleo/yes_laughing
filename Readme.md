@@ -1,10 +1,12 @@
 # Yes Laughing
+ref: https://github.com/wpeebles/gangealing
 
 ## Env
 ```bash
-conda create -y -n yes_laughing python=3.7
+conda create -y -n yes_laughing python=3.8
 conda activate yes_laughing
-conda install pytorch==1.12.0 torchvision==0.13.0 torchaudio==0.12.0 cpuonly -c pytorch
+
+conda install pytorch torchvision torchaudio pytorch-cuda=11.7 -c pytorch -c nvidia
 pip install streamlit streamlit-webrtc 
 pip install Pillow opencv-python-headless
 

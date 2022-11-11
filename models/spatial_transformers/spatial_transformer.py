@@ -5,7 +5,7 @@ import math
 from models.stylegan2.networks import EqualLinear, ConvLayer, ResBlock
 from models.spatial_transformers.warping_heads import SimilarityHead, FlowHead
 from models.spatial_transformers.antialiased_sampling import BilinearDownsample
-from models.losses.loss import total_variation_loss
+#from models.losses.loss import total_variation_loss
 
 
 def get_stn(transforms, **stn_kwargs):
@@ -20,7 +20,7 @@ def get_stn(transforms, **stn_kwargs):
     #     return ComposedSTN(transforms, **stn_kwargs)
 
     #['similarity', 'flow']
-    ComposedSTN(transforms, **stn_kwargs)
+    return ComposedSTN(transforms, **stn_kwargs)
 
 
 def unravel_index(indices, shape):

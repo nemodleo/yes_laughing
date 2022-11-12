@@ -2,6 +2,8 @@
 
 ref: https://github.com/wpeebles/gangealing
 
+![yes_laughing](assets/results/yes_laughing.gif)
+
 
 ## Env
 

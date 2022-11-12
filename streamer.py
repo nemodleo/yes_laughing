@@ -16,7 +16,7 @@ def streamer_webcam_gg():
 
         def __init__(self, model=None) -> None:
             self._model_lock = threading.Lock()
-            self.model = model
+            self.model = True #model
             if self.model:
                 self.args = option()
                 self.gangealing = GanGealing(self.args)

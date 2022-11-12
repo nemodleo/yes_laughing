@@ -11,7 +11,8 @@ donvr -p 4000 -g 0 -n yes_laughing
 
 ```bash
 pip install streamlit streamlit-webrtc \
-            Pillow opencv-python-headless
+            Pillow opencv-python-headless \
+            ninja
 ```
 
 ```bash

@@ -16,7 +16,7 @@ def option():
     use_flipping = False
     video_size = 512
     video_path = 'assets/elon/'
-    object_picker = 'celeba_pokemon.png'
+    object_picker = 'mouse.png'  #'celeba_moustache.png' #'celeba_pokemon.png'
 
     args = MyDict()
     args.device = torch.device('cuda')
@@ -24,7 +24,7 @@ def option():
     args.real_data_path = video_path
     args.fps = 30
     args.batch = 1
-    args.blend_alg = 'alpha'
+    args.blend_alg = 'alpha' #'laplacian' #'laplacian_light'
     args.transform = ['similarity', 'flow']
     args.flow_size = 128
     args.stn_channel_multiplier = 0.5
@@ -61,7 +61,8 @@ def load_dense_label(path, resolution=None, load_colors=False, device='cuda'):
               integers in the range [0, W-1] (x coordinates) or [0, Y-1] (y coordinates). RGB values are in [-1, 1] and
               alpha channel values are in [0, 1].
     """
-    label = torch.from_numpy(np.asarray(Image.open(path))).to(device)  # (H, W, 4) RGBA format
+    label = torch.from_numpy(np.asarray(Image.open(path).convert('RGBA'))).to(device)  # (H, W, 4) RGBA format
+    label = label[...,[2,1,0,3]]
     label = label.permute(2, 0, 1).unsqueeze_(0)  # (1, 4, H, W)
     if resolution is not None and resolution != label.size(0):  # optionally resize the label:
         label = torch.nn.functional.interpolate(label.float(), scale_factor=resolution / label.size(2), mode='bilinear')
@@ -191,6 +192,7 @@ class GanGealing:
         self.prepare()
         print('[*] Warm-Up Spatial Transformer')
         self.warmup()
+        print('[*] Ready!')
 
     def prepare(self):
         self.points, self.colors, self.alpha_channels = load_dense_label(self.label_path, self.resolution, self.objects)
